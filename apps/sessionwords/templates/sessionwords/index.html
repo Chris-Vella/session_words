@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Session Words</title>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="left_side">
+                <h1>Add a new word</h1>
+                <form action="/sessionwords" method="POST">
+                    {% csrf_token %}
+                    <input type="text" name="{{ word }}"><br />
+                    <input type="radio" name ="color" value "{{ red }}" checked/>Red<br />
+                    <input type="radio" name ="color" value "{{ green }}"/>Green<br />
+                    <input type="radio" name ="color" value "{{ blue }}"/>Blue<br />
+                    <input type="checkbox" value="{{ size }}" name="size">Show in BIG fonts!</input><br /> 
+                    <button type="submit">Add to Session</button>
+                </form>
+            </div>
+            <div id="right_side">
+                <ul id="words">
+                    <li id="word">{{word}}</li>
+                </ul>
+                <form action="reset" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" name="reset" value="Clear Session"/>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
